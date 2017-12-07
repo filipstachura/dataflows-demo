@@ -41,17 +41,13 @@ COPY . /code
 
 RUN cd /code
 
+# Python
+RUN apt-get install -y python3.5 python3.5-dev libncurses5-dev \
+  && (wget https://bootstrap.pypa.io/get-pip.py; python3.5 get-pip.py)
 # Dataflows
-RUN mkdir /root/.ssh \
-  && cp /code/deploy-keys/gitlab-deploy-key /root/.ssh/id_rsa \
-  && chmod 700 /root/.ssh/id_rsa \
-  && ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts \
-  && apt-get install -y python3.5 python3.5-dev libncurses5-dev \
-  && (wget https://bootstrap.pypa.io/get-pip.py; python3.5 get-pip.py) \
-  && git clone git@gitlab.com:appsilon/dataflows-workflow.git ${DATAFLOWS_DIR} \
-  && (cd ${DATAFLOWS_DIR}; git checkout --track origin/version-0.3.0-bash) \
+RUN git clone https://github.com/Appsilon/dataflows-workflow.git ${DATAFLOWS_DIR} \
   && (cd ${DATAFLOWS_DIR}/install; ./install-ubuntu-dependencies.sh) \
-  && (cd ${DATAFLOWS_DIR}; ./install.sh) \
+  && (cd ${DATAFLOWS_DIR}; ./install.sh ${DATAFLOWS_DIR}) \
   && (cd /code; dataflows -v)
 
 WORKDIR /code
