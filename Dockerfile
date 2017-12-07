@@ -6,6 +6,7 @@ ENV R_BASE_VERSION 3.2.3
 ENV DATAFLOWS_DIR /dataflows
 
 ## Configure default locale, see https://github.com/rocker-org/rocker/issues/19
+RUN apt-get clean && apt-get update && apt-get install -y locales
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
   && locale-gen en_US.utf8 \
   && /usr/sbin/update-locale LANG=en_US.UTF-8
