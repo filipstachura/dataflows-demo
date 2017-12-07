@@ -1,0 +1,9 @@
+release: xgboost-demo-04-08-2016
+workflows:
+    train:
+        steps:
+            - train.R
+        output:
+            - accuracy
+            - precision
+            - recall
