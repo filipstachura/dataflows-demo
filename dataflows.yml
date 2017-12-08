@@ -1,6 +1,8 @@
-release: xgboost-demo-08-12-2017
+release: xgboost-demo-08-12-2017-2
 workflows:
     train:
+        args: # Inject args from user
+          - sessionId
         steps:
             - train.R
         steps_options:
