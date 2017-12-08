@@ -1,4 +1,4 @@
-release: xgboost-demo-08-12-2017-2
+release: xgboost-demo-08-12-2017-3
 workflows:
     train:
         args: # Inject args from user
@@ -12,6 +12,7 @@ workflows:
                 - ./config/ustawienia_dane_grunty.r
                 - ./config/ustawienia_dane_budynki.r
         output:
+            - missMatch
             - accuracy
             - precision
             - recall
