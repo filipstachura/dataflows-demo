@@ -42,8 +42,8 @@ COPY . /code
 RUN cd /code
 
 # Python
-RUN apt-get install -y python3.5 python3.5-dev libncurses5-dev \
-  && (wget https://bootstrap.pypa.io/get-pip.py; python3.5 get-pip.py)
+RUN apt-get install -y python3 python3-dev libncurses5-dev \
+  && (wget https://bootstrap.pypa.io/get-pip.py; python3 get-pip.py)
 # Dataflows
 RUN git clone https://github.com/Appsilon/dataflows-workflow.git ${DATAFLOWS_DIR} \
   && (cd ${DATAFLOWS_DIR}/install; ./install-ubuntu-dependencies.sh) \
