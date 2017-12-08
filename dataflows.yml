@@ -3,6 +3,12 @@ workflows:
     train:
         steps:
             - train.R
+        steps_options:
+          data:
+            - ./config/ustawienia_dane.r
+            - ./config/ustawienia_dane_lokale.r
+            - ./config/ustawienia_dane_grunty.r
+            - ./config/ustawienia_dane_budynki.r
         output:
             - accuracy
             - precision
